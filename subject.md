@@ -21,6 +21,8 @@ classDiagram
 
     Pedal <-- LinkablePart
 
+    Direction <-- Wheel
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -76,5 +78,10 @@ classDiagram
         LinkablePart *linkablePart
         setTarget(LinkablePart *p_part) void
         use(float p_pression) void
+    }
+
+    class Direction {
+        Array~Wheel~ wheels
+        turn(float p_angle) void
     }
 ```
