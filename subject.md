@@ -49,104 +49,103 @@ classDiagram
 
     class LinkablePart {
         <<intaerface>>
-        execute(float p_pression)* void
+        +execute(float p_pression)* void
     }
 
     class Wheel {
-        executeRotation(float p_force) void
+        +executeRotation(float p_force) void
     }
 
     class Gear {
-        int demultiplier
+        +int demultiplier
     }
 
     class Singleton {
-        %% TODO
     }
 
     class GearLever {
-        Array~Gear~ gears
-        int level
-        change() void
-        activeGear() escape~Gear *~
+        -Array~Gear~ gears
+        -int level
+        +change() void
+        +activeGear() escape~Gear *~
     }
 
     class Transmission {
-        std::vector~Wheel *~
-        active(float p_force) void
+        -std::vector~Wheel *~
+        +active(float p_force) void
     }
 
     class Crankshaft {
-        Transmission *transmission
-        receiveForce(float p_volume) void
+        -Transmission *transmission
+        +receiveForce(float p_volume) void
     }
 
     class ExplosionChamber {
-        Crankshaft *crankshaft
-        fill(float p_volume) void
+        -Crankshaft *crankshaft
+        +fill(float p_volume) void
     }
 
     class Injector {
-        ExplosionChamber *explosionChamber
-        execute(float p_pression) void
+        -ExplosionChamber *explosionChamber
+        +execute(float p_pression) void
     }
 
     class Motor {
-        Injector *injector
-        ExplosionChamber *explosionChamber
-        Crankshaft *crankshaft
-        connectToTransmission(Transmission *p_transmission) void
+        -Injector *injector
+        -ExplosionChamber *explosionChamber
+        -Crankshaft *crankshaft
+        +connectToTransmission(Transmission *p_transmission) void
     }
 
     class Pedal {
-        LinkablePart *linkablePart
-        setTarget(LinkablePart *p_part) void
-        use(float p_pression) void
+        -LinkablePart *linkablePart
+        +setTarget(LinkablePart *p_part) void
+        +use(float p_pression) void
     }
 
     class Direction {
-        Array~Wheel~ wheels
-        turn(float p_angle) void
+        -Array~Wheel~ wheels
+        +turn(float p_angle) void
     }
 
     class DAE {
-        Direction *direction
-        float force
-        use(float p_angle) void
+        -Direction *direction
+        -float force
+        +use(float p_angle) void
     }
 
     class SteerWheel {
-        DAE *dae
-        turn(float p_angle) void
+        -DAE *dae
+        +turn(float p_angle) void
     }
 
     class Brake {
-        Wheel *wheel
-        execute(float p_force) void
-        attackWheel(Wheel *p_wheel) void
+        -Wheel *wheel
+        +execute(float p_force) void
+        +attackWheel(Wheel *p_wheel) void
     }
 
     class BrakeController {
-        Array~Brake~ brakes
-        execute(float p_pression) void
+        -Array~Brake~ brakes
+        +execute(float p_pression) void
     }
 
     class Cockpit {
-        Pedal pedal
-        SteerWheel steerWheel
-        GearLever gearLever
+        +Pedal pedal
+        +SteerWheel steerWheel
+        +GearLever gearLever
     }
 
     class Electronics {
-        DAE dae
+        +DAE dae
     }
 
     class Car {
-        BrakeController brakeController
-        Direction direction
-        Transmission transmission
-        Motor motor
-        Electronics electronics
-        Cockpit cockpit
+        +BrakeController brakeController
+        +Direction direction
+        +Transmission transmission
+        +Motor motor
+        +Electronics electronics
+        +Cockpit cockpit
     }
 ```
