@@ -25,6 +25,8 @@ classDiagram
 
     DAE <-- Direction
 
+    SteerWheel <-- DAE
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -93,4 +95,8 @@ classDiagram
         use(float p_angle) void
     }
 
+    class SteerWheel {
+        DAE *dae
+        turn(float p_angle) void
+    }
 ```
