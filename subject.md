@@ -31,49 +31,49 @@ classDiagram
         class LinkablePart
     }
 
-    GearLever o-- Gear
+    GearLever "*" o-- "1" Gear
 
     Singleton <|-- GearLever : Singleton<GearLever>
 
-    ExplosionChamber <-- Crankshaft
-    Crankshaft <-- Transmission
-    Transmission <-- Wheel
+    ExplosionChamber "0..1" <-- "1" Crankshaft
+    Crankshaft "0..1" <-- "1" Transmission
+    Transmission "*" <-- "1" Wheel
 
-    Injector <-- ExplosionChamber
+    Injector "0..1" <-- "1" ExplosionChamber
 
     LinkablePart <|.. Injector
     LinkablePart <|.. BrakeController
 
-    Motor <-- Injector
-    Motor <-- ExplosionChamber
-    Motor <-- Crankshaft
+    Motor "0..1" <-- "1" Injector
+    Motor "0..1" <-- "1" ExplosionChamber
+    Motor "0..1" <-- "1" Crankshaft
     Motor <.. Transmission
 
-    Pedal <-- LinkablePart
+    Pedal "0..1" <-- "1" LinkablePart
 
-    Direction <-- Wheel
+    Direction "*" <-- "1" Wheel
 
-    DAE <-- Direction
+    DAE "0..1" <-- "1" Direction
 
-    SteerWheel <-- DAE
+    SteerWheel "0..1" <-- "1" DAE
 
-    Brake <-- Wheel
+    Brake "0..1" <-- "1" Wheel
     Brake <.. Wheel
 
-    BrakeController o-- Brake
+    BrakeController "*" o-- "1" Brake
 
-    Cockpit *--Pedal
-    Cockpit *--SteerWheel
-    Cockpit *--GearLever
+    Cockpit "1" *-- "1" Pedal
+    Cockpit "1" *-- "1" SteerWheel
+    Cockpit "1" *-- "1" GearLever
 
-    Electronics *-- DAE
+    Electronics "1" *-- "1" DAE
 
-    Car *-- BrakeController
-    Car *-- Direction
-    Car *-- Transmission
-    Car *-- Motor
-    Car *-- Electronics
-    Car *-- Cockpit
+    Car "1" *-- "1" BrakeController
+    Car "1" *-- "1" Direction
+    Car "1" *-- "1" Transmission
+    Car "1" *-- "1" Motor
+    Car "1" *-- "1" Electronics
+    Car "1" *-- "1" Cockpit
 
     class LinkablePart {
         <<intaerface>>
