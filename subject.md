@@ -14,6 +14,11 @@ classDiagram
     Injector <-- ExplosionChamber
     LinkablePart <.. Injector
 
+    Motor <-- Injector
+    Motor <-- ExplosionChamber
+    Motor <-- Crankshaft
+    Motor <.. Transmission
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -58,4 +63,10 @@ classDiagram
         execute(float p_pression) void
     }
 
+    class Motor {
+        Injector *injector
+        ExplosionChamber *explosionChamber
+        Crankshaft *crankshaft
+        connectToTransmission(Transmission *p_transmission) void
+    }
 ```
