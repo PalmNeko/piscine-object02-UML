@@ -27,6 +27,9 @@ classDiagram
 
     SteerWheel <-- DAE
 
+    Brake <-- Wheel
+    Brake <.. Wheel
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -98,5 +101,15 @@ classDiagram
     class SteerWheel {
         DAE *dae
         turn(float p_angle) void
+    }
+
+    class Brake {
+        Wheel *wheel
+        execute(float p_force) void
+        attackWheel(Wheel *p_wheel) void
+    }
+
+    class BrakeController {
+        
     }
 ```
