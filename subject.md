@@ -38,6 +38,8 @@ classDiagram
     Cockpit *--SteerWheel
     Cockpit *--GearLever
 
+    Electronics *-- DAE
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -126,5 +128,9 @@ classDiagram
         Pedal pedal
         SteerWheel steerWheel
         GearLever gearLever
+    }
+
+    class Electronics {
+        DAE dae
     }
 ```
