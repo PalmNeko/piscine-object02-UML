@@ -1,5 +1,10 @@
 
 ```mermaid
+---
+config:
+  theme: forest
+---
+
 classDiagram
     direction TB
 
