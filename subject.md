@@ -19,6 +19,8 @@ classDiagram
     Motor <-- Crankshaft
     Motor <.. Transmission
 
+    Pedal <-- LinkablePart
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -68,5 +70,11 @@ classDiagram
         ExplosionChamber *explosionChamber
         Crankshaft *crankshaft
         connectToTransmission(Transmission *p_transmission) void
+    }
+
+    class Pedal {
+        LinkablePart *linkablePart
+        setTarget(LinkablePart *p_part) void
+        use(float p_pression) void
     }
 ```
