@@ -3,6 +3,34 @@
 classDiagram
     direction TB
 
+
+    namespace Composition {
+        class Car
+        class Cockpit
+        class Electronics
+    }
+
+    namespace Controller {
+        class Pedal
+        class SteerWheel
+        class DAE
+        class Direction
+        class BrakeController
+        class Brake
+    }
+
+    namespace Power {
+        class Motor
+        class Wheel
+        class GearLever
+        class Gear
+        class Injector
+        class ExplosionChamber
+        class Crankshaft
+        class Transmission
+        class LinkablePart
+    }
+
     GearLever o-- Gear
 
     Singleton <|-- GearLever : Singleton<GearLever>
