@@ -12,7 +12,9 @@ classDiagram
     Transmission <-- Wheel
 
     Injector <-- ExplosionChamber
+
     LinkablePart <.. Injector
+    LinkablePart <|.. BrakeController
 
     Motor <-- Injector
     Motor <-- ExplosionChamber
@@ -29,6 +31,8 @@ classDiagram
 
     Brake <-- Wheel
     Brake <.. Wheel
+
+    BrakeController o-- Brake
 
     class LinkablePart {
         <<intaerface>>
@@ -110,6 +114,7 @@ classDiagram
     }
 
     class BrakeController {
-        
+        Array~Brake~ brakes
+        execute(float p_pression) void
     }
 ```
