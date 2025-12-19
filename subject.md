@@ -40,6 +40,13 @@ classDiagram
 
     Electronics *-- DAE
 
+    Car *-- BrakeController
+    Car *-- Direction
+    Car *-- Transmission
+    Car *-- Motor
+    Car *-- Electronics
+    Car *-- Cockpit
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -132,5 +139,14 @@ classDiagram
 
     class Electronics {
         DAE dae
+    }
+
+    class Car {
+        BrakeController brakeController
+        Direction direction
+        Transmission transmission
+        Motor motor
+        Electronics electronics
+        Cockpit cockpit
     }
 ```
