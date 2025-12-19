@@ -67,7 +67,7 @@ classDiagram
     class GearLever {
         Array~Gear~ gears
         int level
-        charge() void
+        change() void
         activeGear() escape~Gear *~
     }
 
