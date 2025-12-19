@@ -7,8 +7,9 @@ classDiagram
 
     Singleton <|-- GearLever : Singleton<GearLever>
 
-    Transmission <-- Wheel
+    ExplosionChamber <-- Crankshaft
     Crankshaft <-- Transmission
+    Transmission <-- Wheel
 
     class LinkablePart {
         <<intaerface>>
@@ -43,4 +44,10 @@ classDiagram
         Transmission *transmission
         receiveForce(float p_volume) void
     }
+
+    class ExplosionChamber {
+        Crankshaft *crankshaft
+        fill(float p_volume) void
+    }
+
 ```
