@@ -34,6 +34,10 @@ classDiagram
 
     BrakeController o-- Brake
 
+    Cockpit *--Pedal
+    Cockpit *--SteerWheel
+    Cockpit *--GearLever
+
     class LinkablePart {
         <<intaerface>>
         execute(float p_pression)* void
@@ -116,5 +120,11 @@ classDiagram
     class BrakeController {
         Array~Brake~ brakes
         execute(float p_pression) void
+    }
+
+    class Cockpit {
+        Pedal pedal
+        SteerWheel steerWheel
+        GearLever gearLever
     }
 ```
