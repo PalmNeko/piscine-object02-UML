@@ -13,7 +13,7 @@ classDiagram
 
     Injector <-- ExplosionChamber
 
-    LinkablePart <.. Injector
+    LinkablePart <|.. Injector
     LinkablePart <|.. BrakeController
 
     Motor <-- Injector
