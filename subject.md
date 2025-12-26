@@ -2,12 +2,11 @@
 ```mermaid
 ---
 config:
-  theme: forest
+  theme: neo
 ---
 
 classDiagram
     direction TB
-
 
     namespace Composition {
         class Car
@@ -36,36 +35,35 @@ classDiagram
         class LinkablePart
     }
 
-    GearLever "*" o-- "1" Gear
+    GearLever "*" *-- "1" Gear
 
     Singleton <|-- GearLever : Singleton<GearLever>
 
-    ExplosionChamber "0..1" <-- "1" Crankshaft
-    Crankshaft "0..1" <-- "1" Transmission
-    Transmission "*" <-- "1" Wheel
+    ExplosionChamber "0..1" o-- "1" Crankshaft
+    Crankshaft "0..1" o-- "1" Transmission
+    Transmission "*" o-- "1" Wheel
 
-    Injector "0..1" <-- "1" ExplosionChamber
+    Injector "0..1" o-- "1" ExplosionChamber
 
     LinkablePart <|.. Injector
     LinkablePart <|.. BrakeController
 
-    Motor "0..1" <-- "1" Injector
-    Motor "0..1" <-- "1" ExplosionChamber
-    Motor "0..1" <-- "1" Crankshaft
-    Motor <.. Transmission
+    Motor "0..1" *-- "1" Injector
+    Motor "0..1" *-- "1" ExplosionChamber
+    Motor "0..1" *-- "1" Crankshaft
+    Motor *.. Transmission
 
-    Pedal "0..1" <-- "1" LinkablePart
+    Pedal "0..1" o-- "1" LinkablePart
 
-    Direction "*" <-- "1" Wheel
+    Direction "*" *-- "1" Wheel
 
-    DAE "0..1" <-- "1" Direction
+    DAE "0..1" o-- "1" Direction
 
-    SteerWheel "0..1" <-- "1" DAE
+    SteerWheel "0..1" o-- "1" DAE
 
-    Brake "0..1" <-- "1" Wheel
-    Brake <.. Wheel
+    Brake "0..1" o-- "1" Wheel
 
-    BrakeController "*" o-- "1" Brake
+    BrakeController "*" *-- "1" Brake
 
     Cockpit "1" *-- "1" Pedal
     Cockpit "1" *-- "1" SteerWheel
