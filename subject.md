@@ -12,6 +12,7 @@ classDiagram
         class Car
         class Cockpit
         class Electronics
+        class Motor
     }
 
     namespace Controller {
@@ -24,9 +25,8 @@ classDiagram
     }
 
     namespace Power {
-        class Motor
-        class Wheel
         class GearLever
+        class Wheel
         class Gear
         class Injector
         class ExplosionChamber
@@ -37,7 +37,7 @@ classDiagram
 
     GearLever "*" *-- "1" Gear
 
-    Singleton <|-- GearLever : Singleton<GearLever>
+    Singleton <|-- GearLever : Singleton< GearLever >
 
     ExplosionChamber "0..1" o-- "1" Crankshaft
     Crankshaft "0..1" o-- "1" Transmission
@@ -48,16 +48,16 @@ classDiagram
     LinkablePart <|.. Injector
     LinkablePart <|.. BrakeController
 
-    Motor "0..1" *-- "1" Injector
-    Motor "0..1" *-- "1" ExplosionChamber
-    Motor "0..1" *-- "1" Crankshaft
-    Motor *.. Transmission
+    Motor "1" *-- "1" Injector
+    Motor "1" *-- "1" ExplosionChamber
+    Motor "1" *-- "1" Crankshaft
 
     Pedal "0..1" o-- "1" LinkablePart
 
     Direction "*" *-- "1" Wheel
 
-    DAE "0..1" o-- "1" Direction
+
+    Electronics "1" *-- "1" DAE
 
     SteerWheel "0..1" o-- "1" DAE
 
@@ -69,7 +69,6 @@ classDiagram
     Cockpit "1" *-- "1" SteerWheel
     Cockpit "1" *-- "1" GearLever
 
-    Electronics "1" *-- "1" DAE
 
     Car "1" *-- "1" BrakeController
     Car "1" *-- "1" Direction
@@ -77,6 +76,8 @@ classDiagram
     Car "1" *-- "1" Motor
     Car "1" *-- "1" Electronics
     Car "1" *-- "1" Cockpit
+
+    DAE "0..1" o-- "1" Direction
 
     class LinkablePart {
         <<intaerface>>
@@ -98,7 +99,7 @@ classDiagram
         -Array~Gear~ gears
         -int level
         +change() void
-        +activeGear() escape~Gear *~
+        +activeGear() "Gear *"
     }
 
     class Transmission {
@@ -122,9 +123,9 @@ classDiagram
     }
 
     class Motor {
-        -Injector *injector
-        -ExplosionChamber *explosionChamber
-        -Crankshaft *crankshaft
+        -Injector injector
+        -ExplosionChamber explosionChamber
+        -Crankshaft crankshaft
         +connectToTransmission(Transmission *p_transmission) void
     }
 
